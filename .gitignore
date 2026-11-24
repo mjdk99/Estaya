@@ -1,0 +1,22 @@
+node_modules/
+.astro/
+.firebase/
+functions/lib/
+functions/.secret.local
+*.log
+firebase-debug.log
+firebase-debug.*.log
+firestore-debug.log
+ui-debug.log
+.env
+.env.local
+.env.production
+.env.*.local
+functions/.env
+# Firebase CLI login tokens and service-account keys
+firebase-tools.json
+**/*firebase-adminsdk*.json
+**/serviceAccount*.json
+**/service-account*.json
+.runtimeconfig.json
+.DS_Store

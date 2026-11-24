@@ -1,0 +1,82 @@
+---
+import Base from "../layouts/Base.astro";
+import { brandAssets, routes, site } from "../config/site";
+
+const meta = routes[0];
+---
+
+<Base title={meta.title} description={meta.description} organization preloadHero>
+  <section class="hero">
+    {brandAssets.hero && (
+      <picture>
+        <source type="image/avif" srcset={brandAssets.hero.avif} sizes="100vw" />
+        <source type="image/webp" srcset={brandAssets.hero.webp} sizes="100vw" />
+        <img
+          class="hero-media"
+          src={brandAssets.hero.src}
+          alt=""
+          width={brandAssets.hero.width}
+          height={brandAssets.hero.height}
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
+    )}
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="wrap hero-copy">
+      <h1>{site.tagline}.</h1>
+      <div class="rule" aria-hidden="true"></div>
+      <p>{site.heroCopy}</p>
+      <div class="hero-actions">
+        <a class="btn btn-light" href="/give-supplies/#offer">Offer medical supplies</a>
+        <a class="btn btn-ghost" href="/for-nonprofits/">For nonprofit partners</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>The need</h2>
+      <p>Medical supplies and equipment that could still serve a purpose are discarded, even as healthcare providers struggle to get the products they need. Many nonprofits already know what their communities need. Finding, sorting and shipping those products takes time and resources.</p>
+    </div>
+  </section>
+
+  <section class="section section-stone">
+    <div class="wrap prose">
+      <h2>How it works</h2>
+      <p>Recover surplus from healthcare organizations. Assess what can be used and where it fits. Connect products with nonprofit partners and sell suitable inventory to help fund recovery and distribution.</p>
+      <p><a class="text-link" href="/how-it-works/">See how it works</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Where to start</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Have supplies to offer?</h3>
+          <p>Tell us about surplus medical supplies or equipment your organization can no longer use.</p>
+          <a class="text-link" href="/give-supplies/">Give Supplies</a>
+        </article>
+        <article class="card">
+          <h3>Looking for supplies?</h3>
+          <p>Tell us what your nonprofit needs and where the products would be used.</p>
+          <a class="text-link" href="/for-nonprofits/">For Nonprofits</a>
+        </article>
+        <article class="card">
+          <h3>Want to help build Estaya?</h3>
+          <p>Introduce a partner, offer a connection, or ask how to support the work.</p>
+          <a class="text-link" href="/support/">Support Estaya</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Help build a more dependable source of medical supplies.</h2>
+      <div class="rule" aria-hidden="true"></div>
+      <a class="btn btn-light" href="/support/">Support Estaya</a>
+    </div>
+  </section>
+</Base>

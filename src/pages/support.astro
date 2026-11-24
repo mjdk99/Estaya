@@ -1,0 +1,50 @@
+---
+import Base from "../layouts/Base.astro";
+import { donateOffer } from "../config/features";
+import { routes } from "../config/site";
+
+const meta = routes[5];
+const donate = donateOffer();
+const options = [
+  "Introduce us to a healthcare organization",
+  "Connect us with a nonprofit partner",
+  "Ask about supporting Estaya",
+];
+---
+
+<Base title={meta.title} description={meta.description}>
+  <section class="section intro">
+    <div class="wrap prose">
+      <h1>Help Estaya get started.</h1>
+      <div class="rule" aria-hidden="true"></div>
+      <p>Help build the work that makes recovered medical products useful again. Estaya is setting up the systems and partnerships needed to collect, assess and distribute medical supplies.</p>
+    </div>
+  </section>
+  <section class="section section-stone">
+    <div class="wrap">
+      <h2>Ways to help</h2>
+      <div class="options">
+        {options.map((label) => (
+          <article class="option">
+            <h3>{label}</h3>
+            <a class="text-link" href="/contact/?topic=support">{label}</a>
+          </article>
+        ))}
+      </div>
+      <p class="prose follow">If you have surplus medical products to offer, start on <a href="/give-supplies/">Give Supplies</a>.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap prose">
+      <h2>Financial support</h2>
+      {donate ? (
+        <p>
+          {donate.wording}{" "}
+          <a href={donate.href} rel="noopener noreferrer">Donate</a>
+        </p>
+      ) : (
+        <p>Financial contributions are not available through this website yet.</p>
+      )}
+    </div>
+  </section>
+</Base>

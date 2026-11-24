@@ -1,0 +1,29 @@
+{
+  "indexes": [],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "inquiries",
+      "fieldPath": "details.description",
+      "ttl": false,
+      "indexes": []
+    },
+    {
+      "collectionGroup": "inquiries",
+      "fieldPath": "details.needs",
+      "ttl": false,
+      "indexes": []
+    },
+    {
+      "collectionGroup": "inquiries",
+      "fieldPath": "details.message",
+      "ttl": false,
+      "indexes": []
+    },
+    {
+      "collectionGroup": "inquiries",
+      "fieldPath": "details.intendedUse",
+      "ttl": false,
+      "indexes": []
+    }
+  ]
+}

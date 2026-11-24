@@ -1,0 +1,28 @@
+---
+import { brandAssets, footerNav, site } from "../config/site";
+import { contactEmail } from "../config/features";
+
+const email = contactEmail();
+const year = 2026;
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      {brandAssets.logoStacked ? (
+        <img src={brandAssets.logoStacked} alt="Estaya" height="72" />
+      ) : (
+        <a class="footer-mark" href="/">ESTAYA</a>
+      )}
+      <p class="footer-tag">{site.tagline}</p>
+      <p>{site.description}</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      {footerNav.map((item) => <a href={item.href}>{item.label}</a>)}
+      {email && <a href={`mailto:${email}`}>{email}</a>}
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="legal">© {year} Estaya</p>
+  </div>
+</footer>

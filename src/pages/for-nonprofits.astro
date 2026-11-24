@@ -1,0 +1,46 @@
+---
+import Base from "../layouts/Base.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+import { forms, routes } from "../config/site";
+
+const meta = routes[4];
+const form = forms.partner_inquiry;
+---
+
+<Base title={meta.title} description={meta.description}>
+  <section class="section intro">
+    <div class="wrap prose">
+      <h1>Tell us what medical supplies your organization needs.</h1>
+      <div class="rule" aria-hidden="true"></div>
+      <p>Estaya is developing a program for nonprofit organizations that source supplies and equipment for healthcare and humanitarian work. Tell us what your organization needs and where it will be used so we can understand whether there’s a fit.</p>
+      <h2>How it starts</h2>
+      <p>Share your organization’s needs. Estaya will review the request and follow up about eligibility, available products and shipping as the program develops.</p>
+      <h2>Cost</h2>
+      <p>The program is designed to provide products to qualified nonprofit partners at no product cost. Partners may initially cover shipping. Estaya will confirm any costs and arrangements during follow-up.</p>
+    </div>
+  </section>
+  <section class="section section-stone">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <div class="faq">
+        <div>
+          <h3>Can individuals request supplies?</h3>
+          <p>The launch program is designed for nonprofit organizations.</p>
+        </div>
+        <div>
+          <h3>Does an inquiry reserve products?</h3>
+          <p>An inquiry helps us understand your needs. Product availability and fulfillment are confirmed separately.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <InquiryForm
+    kind="partner_inquiry"
+    id={form.id}
+    heading={form.heading}
+    button={form.button}
+    success={form.success}
+    fields={form.fields}
+    unavailable="Estaya is not receiving partner inquiries through this form yet."
+  />
+</Base>

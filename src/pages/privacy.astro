@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+import { routes } from "../config/site";
+
+const meta = routes[7];
+---
+
+<Base title={meta.title} description={meta.description}>
+  <section class="section intro">
+    <div class="wrap prose">
+      <h1>Privacy</h1>
+      <div class="rule" aria-hidden="true"></div>
+      <p>This is a launch draft for owner review. An effective date and a privacy contact will be added before publication.</p>
+      <p>When you submit a form, Estaya receives the contact details and information you provide so we can respond, assess potential donations or partnerships, and coordinate next steps. Our hosting, form processing and security services help us operate the website. Authorized staff can access inquiries for this work. Please avoid sending patient information, payment details or sensitive personal records. You can contact us with privacy questions through the Contact page.</p>
+      <p>The launch site does not use marketing analytics. A retention and deletion period is not published yet. Form screening such as App Check will be described here if it is turned on for the public site.</p>
+      <p><a href="/contact/">Contact Estaya</a></p>
+    </div>
+  </section>
+</Base>

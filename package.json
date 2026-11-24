@@ -1,0 +1,31 @@
+{
+  "name": "estaya",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Estaya public website. Astro builds the static site into public/ for Firebase Hosting.",
+  "type": "module",
+  "engines": {
+    "node": "22"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4321",
+    "build": "astro build && node scripts/hosting-finalize.mjs",
+    "preview": "astro preview --host 127.0.0.1 --port 4321",
+    "typecheck": "astro check && npm --prefix functions run typecheck",
+    "lint": "astro check && npm --prefix functions run typecheck",
+    "test": "npm --prefix functions test",
+    "test:emulator": "node functions/scripts/ensure-dev-secret.mjs && npm --prefix functions run build && firebase emulators:exec --only firestore,functions \"node functions/scripts/emulator-check.mjs\"",
+    "emulators": "node functions/scripts/ensure-dev-secret.mjs && npm --prefix functions run build && firebase emulators:start --only hosting,functions,firestore"
+  },
+  "dependencies": {
+    "@fontsource/montserrat": "5.3.0",
+    "@fontsource/playfair-display": "5.3.0",
+    "firebase": "13.4.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "astro": "7.4.13",
+    "firebase-tools": "15.37.0",
+    "typescript": "5.9.3"
+  }
+}

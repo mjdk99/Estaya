@@ -1,0 +1,47 @@
+---
+import Base from "../layouts/Base.astro";
+import { needParagraphs, routes, site, values } from "../config/site";
+
+const meta = routes[1];
+---
+
+<Base title={meta.title} description={meta.description}>
+  <section class="section intro">
+    <div class="wrap prose">
+      <h1>About Estaya.</h1>
+      <div class="rule" aria-hidden="true"></div>
+      <p>Estaya is a Minnesota nonprofit building a medical supply recovery program. We’re developing a central place to collect, assess and match surplus medical products with organizations that can use them.</p>
+    </div>
+  </section>
+
+  <section class="section section-stone">
+    <div class="wrap prose">
+      <h2>Mission</h2>
+      <p>{site.mission}</p>
+      <h2>Vision</h2>
+      <p>{site.vision}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>The need and Estaya’s response</h2>
+      {needParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+      <p><a class="text-link" href="/how-it-works/">See how it works</a></p>
+    </div>
+  </section>
+
+  <section class="section section-stone">
+    <div class="wrap">
+      <h2>Values</h2>
+      <div class="values">
+        {values.map(([name, copy]) => (
+          <article class="value">
+            <h3>{name}</h3>
+            <p>{copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

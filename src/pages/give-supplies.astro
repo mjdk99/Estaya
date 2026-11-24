@@ -1,0 +1,44 @@
+---
+import Base from "../layouts/Base.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+import { forms, routes } from "../config/site";
+
+const meta = routes[3];
+const form = forms.supply_offer;
+---
+
+<Base title={meta.title} description={meta.description}>
+  <section class="section intro">
+    <div class="wrap prose">
+      <h1>Give surplus medical supplies and equipment.</h1>
+      <div class="rule" aria-hidden="true"></div>
+      <p>If your hospital, clinic, manufacturing facility or distribution operation has surplus medical supplies or equipment, tell us what you have. Estaya will review the offer and follow up about fit and logistics.</p>
+      <h2>What to share</h2>
+      <p>Tell us the type of products, approximate quantities, condition and where they are located. For equipment, share the manufacturer and model if known. For supplies, share expiration information when available.</p>
+    </div>
+  </section>
+  <section class="section section-stone">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <div class="faq">
+        <div>
+          <h3>What can I offer?</h3>
+          <p>Contact us about surplus medical supplies or equipment. Acceptance depends on the items, their condition and whether Estaya has an appropriate way to use them. Estaya excludes pharmaceuticals.</p>
+        </div>
+        <div>
+          <h3>Can I schedule a pickup or drop-off?</h3>
+          <p>Start with an inquiry. Estaya will confirm the handoff and discuss freight or pickup when it can accept an offer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <InquiryForm
+    kind="supply_offer"
+    id={form.id}
+    heading={form.heading}
+    button={form.button}
+    success={form.success}
+    fields={form.fields}
+    unavailable="Estaya is not receiving supply offers through this form yet."
+  />
+</Base>

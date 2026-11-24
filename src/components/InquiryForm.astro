@@ -1,0 +1,106 @@
+---
+import type { FormField } from "../config/site";
+import { contactEmail, intakeOpen, type IntakeKind } from "../config/features";
+
+interface Props {
+  kind: IntakeKind;
+  id: string;
+  heading: string;
+  button: string;
+  success: string;
+  fields: FormField[];
+  unavailable: string;
+}
+
+const { kind, id, heading, button, success, fields, unavailable } = Astro.props;
+const open = intakeOpen(kind);
+const email = contactEmail();
+const contactReady = intakeOpen("contact");
+---
+
+<section class="section" id={id}>
+  <div class="wrap">
+    <h2>{heading}</h2>
+    <div class="rule" aria-hidden="true"></div>
+    {open ? (
+      <form class="form-block" data-inquiry-form data-kind={kind} data-success={success} data-email={email ?? undefined} novalidate>
+        <div class="form-grid two">
+          {fields.map((field) => {
+            const inputId = `${kind}-${field.key}`;
+            const errorId = `${inputId}-error`;
+            const wide = field.type === "textarea" || field.key === "description" || field.key === "needs" || field.key === "message" || field.key === "intendedUse";
+            return (
+              <div class={wide ? "wide" : undefined}>
+                <label for={inputId}>
+                  {field.label}
+                  {field.required ? " (required)" : ""}
+                </label>
+                {field.type === "textarea" ? (
+                  <textarea
+                    id={inputId}
+                    data-field={field.key}
+                    data-group={field.group}
+                    data-max={field.maxLength}
+                    data-required-message={field.requiredMessage}
+                    maxlength={field.maxLength}
+                    required={field.required}
+                    aria-describedby={errorId}
+                    autocomplete={field.autoComplete}
+                  />
+                ) : field.type === "select" ? (
+                  <select
+                    id={inputId}
+                    data-field={field.key}
+                    data-group={field.group}
+                    data-max={field.maxLength}
+                    data-required-message={field.requiredMessage}
+                    required={field.required}
+                    aria-describedby={errorId}
+                  >
+                    {field.options?.map((option) => <option value={option.value}>{option.label}</option>)}
+                  </select>
+                ) : (
+                  <input
+                    id={inputId}
+                    type={field.type}
+                    data-field={field.key}
+                    data-group={field.group}
+                    data-max={field.maxLength}
+                    data-url={field.url ? "true" : undefined}
+                    data-required-message={field.requiredMessage}
+                    maxlength={field.maxLength}
+                    required={field.required}
+                    aria-describedby={errorId}
+                    autocomplete={field.autoComplete === "url" ? "url" : field.autoComplete}
+                  />
+                )}
+                <p class="field-error" id={errorId} data-error-for={field.key}></p>
+              </div>
+            );
+          })}
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label for={`${kind}-fax`}>Fax</label>
+          <input id={`${kind}-fax`} data-field="companyFax" tabindex="-1" autocomplete="off" />
+        </div>
+        <p class="form-note" id={`${kind}-privacy`}>
+          Please do not include patient information, payment details, or sensitive personal records.
+          <a href="/privacy/">Read the privacy draft</a>.
+        </p>
+        <p class="field-error" data-error-for="_form"></p>
+        <button class="btn btn-teal" type="submit" aria-describedby={`${kind}-privacy`}>{button}</button>
+        <p class="form-status" data-status role="status"></p>
+      </form>
+    ) : (
+      <div class="notice">
+        <p>{unavailable}</p>
+        {kind !== "contact" && contactReady && <p><a href="/contact/">Contact Estaya</a></p>}
+        {email && <p><a href={`mailto:${email}`}>{email}</a></p>}
+      </div>
+    )}
+  </div>
+</section>
+
+{open && <script>
+  import "../scripts/inquiry-form.ts";
+</script>}

@@ -1,0 +1,28 @@
+---
+import Base from "../layouts/Base.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+import { forms, routes } from "../config/site";
+
+const meta = routes[6];
+const form = forms.contact;
+---
+
+<Base title={meta.title} description={meta.description}>
+  <section class="section intro">
+    <div class="wrap prose">
+      <h1>Contact Estaya.</h1>
+      <div class="rule" aria-hidden="true"></div>
+      <p>Send us a question or tell us how you’d like to work together. If you’re offering medical supplies or requesting them on behalf of a nonprofit, use the relevant form so we can review the details.</p>
+      <p><a href="/give-supplies/">Give Supplies</a> · <a href="/for-nonprofits/">For Nonprofits</a></p>
+    </div>
+  </section>
+  <InquiryForm
+    kind="contact"
+    id={form.id}
+    heading={form.heading}
+    button={form.button}
+    success={form.success}
+    fields={form.fields}
+    unavailable="Estaya is not receiving messages through this form yet."
+  />
+</Base>
