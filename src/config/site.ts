@@ -73,7 +73,7 @@ export const values = [
 export const needParagraphs = [
   "U.S. healthcare organizations discard medical supplies and equipment that may still be useful. At the same time, healthcare providers in under-resourced communities can struggle to get basic products they need. The nonprofits serving them already know their communities and work with local healthcare providers. Sourcing, sorting and shipping products from multiple donors can take substantial time, money and space.",
   "Even established recovery operations can struggle to match available inventory with what partners need. A large shipment can leave a partner without the requested products and create extra work sorting, storing or disposing of items it cannot use. Equipment also brings practical questions about condition, compatibility, maintenance and shipping.",
-  "Estaya’s approach is to collect and assess surplus in one place, match products to requests from qualified nonprofit partners and sell suitable donated inventory to help fund the work. Qualified nonprofits are intended to receive products at no product cost. Shipping may be partner-paid initially, and Estaya aims to subsidize more freight as resources allow. A partner should understand any freight or related logistics costs before accepting a shipment.",
+  "Estaya’s approach is to collect and assess surplus in one place, match products to requests from qualified nonprofit partners and sell suitable donated inventory to help fund the work. Qualified nonprofits are intended to receive products at no product cost.",
 ] as const;
 
 export const steps = [
